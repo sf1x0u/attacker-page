@@ -30,17 +30,21 @@
             margin-bottom: 20px; /* Added spacing */
         }
 
-        .sub-heading, .created-by {
+        .sub-heading {
             font-size: 1.5em;
             font-weight: bold;
             color: #00cc00;
             text-shadow: 0 0 5px #00cc00, 0 0 10px #00cc00;
-            margin-bottom: 20px; /* Keeps equal spacing */
+            margin-bottom: 30px; /* Added spacing */
         }
 
         .created-by {
             font-size: 1em;
-            opacity: 0.8; /* Optional: Slightly dim */
+            font-family: Arial, sans-serif; /* Normal web font */
+            color: white; /* Normal white text */
+            text-shadow: none; /* No glow effect */
+            font-style: italic; /* Optional: Add an italic effect */
+            margin-top: 10px;
         }
 
         @keyframes glow {
@@ -59,8 +63,8 @@
     <canvas id="matrixCanvas"></canvas>
     <div class="container">
         <div class="glowing-text">ATTACKER CONTROLLED SITE</div>
-        <div class="sub-heading">Your Security is an Illusion</div>
-        <div class="created-by">Created by sf1x0u@Github</div>
+        <div class="sub-heading">"Your Security is an Illusion"</div>
+        <div class="created-by">Created by sf1x0u@Github</div> 
     </div>
 
     <script>
