@@ -3,46 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controlled by Attacker</title>
+    <title>Attacker Controlled</title>
     <style>
         body {
             margin: 0;
             overflow: hidden;
             background: black;
-            color: red;
-            text-align: center;
-            font-family: Arial, sans-serif;
+            color: #00ff00; /* Matrix Green */
+            font-family: "Courier New", monospace; /* Hacking Font */
         }
-        <h1 class="glitch" data-text="ACCESS GRANTED">ACCESS GRANTED</h1>
 
-<style>
-    .glitch {
-        position: absolute;
-        width: 100%;
-        top: 10%;
-        font-size: 3em;
-        color: #00ff00; /* Matrix Green */
-        font-weight: bold;
-        text-align: center;
-        text-transform: uppercase;
-        text-shadow: 0px 0px 5px #00ff00;
-        animation: glitch 0.7s infinite;
-    }
+        .hacker-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4em;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
+            animation: hacker-flash 0.8s infinite alternate;
+        }
 
-    @keyframes glitch {
-        0% { text-shadow: 2px 2px red, -2px -2px blue; }
-        20% { text-shadow: -2px -2px red, 2px 2px blue; }
-        40% { text-shadow: 2px -2px red, -2px 2px blue; }
-        60% { text-shadow: -2px 2px red, 2px -2px blue; }
-        80% { text-shadow: 2px 2px red, -2px -2px blue; }
-        100% { text-shadow: -2px -2px red, 2px 2px blue; }
-    }
-</style>
+        @keyframes hacker-flash {
+            0% { color: #00ff00; text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00; }
+            100% { color: #008000; text-shadow: 0px 0px 5px #008000, 0px 0px 10px #008000; }
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 14px;
+            color: white;
+            opacity: 0.7;
+            font-family: "Courier New", monospace;
+        }
+    </style>
 </head>
 <body>
-    <h1>Controlled by Attacker</h1>
+    <div class="hacker-text">Attacker Controlled</div>
     <canvas id="matrixCanvas"></canvas>
-    <div class="footer">Created by Github@sf1x0u</div>
+    <div class="footer">Created by sf1x0u@Github</div>
 
     <script>
         const canvas = document.getElementById('matrixCanvas');
