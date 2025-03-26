@@ -6,7 +6,9 @@
     <title>Controlled by Attacker</title>
     <style>
         body {
-            background-color: black;
+            margin: 0;
+            overflow: hidden;
+            background: black;
             color: red;
             text-align: center;
             font-family: Arial, sans-serif;
@@ -15,25 +17,15 @@
             font-size: 3em;
             margin-top: 50px;
             text-shadow: 0px 0px 10px red;
+            position: absolute;
+            width: 100%;
+            top: 10%;
+            z-index: 10;
         }
-        .globe-container {
-            margin-top: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 300px;
-        }
-        .globe {
-            width: 150px;
-            height: 150px;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/2/2c/Rotating_earth_%28large%29.gif') no-repeat center center;
-            background-size: cover;
-            border-radius: 50%;
-            animation: spin 5s linear infinite;
-        }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
         }
         .footer {
             position: fixed;
@@ -42,14 +34,50 @@
             font-size: 14px;
             color: white;
             opacity: 0.7;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
     <h1>Controlled by Attacker</h1>
-    <div class="globe-container">
-        <div class="globe"></div>
-    </div>
+    <canvas id="matrixCanvas"></canvas>
     <div class="footer">Created by sf1x0u@Github</div>
+
+    <script>
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const letters = "0101011100110101001101010101001011100101011101101";
+        const matrix = letters.split("");
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#00FF00"; // Matrix green
+            ctx.font = fontSize + "px monospace";
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrix[Math.floor(Math.random() * matrix.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
