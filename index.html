@@ -18,11 +18,11 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 4em;
+            font-size: 2.5em; /* Adjusted to a slightly smaller size */
             font-weight: bold;
             text-transform: uppercase;
             text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
-            animation: hacker-flash 0.8s infinite alternate;
+            animation: hacker-flash 1s infinite alternate;
         }
 
         @keyframes hacker-flash {
@@ -61,7 +61,7 @@
 
         const letters = "0101011100110101001101010101001011100101011101101";
         const matrix = letters.split("");
-        const fontSize = 16;
+        const fontSize = 14; /* Slightly smaller font size */
         const columns = canvas.width / fontSize;
         const drops = Array(Math.floor(columns)).fill(1);
 
